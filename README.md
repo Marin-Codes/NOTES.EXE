@@ -1,111 +1,206 @@
-# NOTES.EXE 💾
+# 💾 NOTES.EXE
 
-### Student Notes Platform — Windows 95 × Y2K × Gen Z
+<p align="center">
+  <img src="https://i.pinimg.com/originals/3f/87/fb/3f87fbdd44be02953a4fda9ec5c13db1.gif" width="420">
+</p>
 
-> "A computer from 1998 that somehow became a student productivity app in 2026."
+<p align="center">
+  <b>🖥️ Windows 95 × 💿 Y2K × 💗 Gen Z</b>
+</p>
 
-NOTES.EXE is a nostalgic, student-focused notes platform designed around an authentic **Windows 95 + Y2K + Gen Z internet aesthetic**. Built with pure vanilla web technologies with zero build steps or heavy dependencies.
+<p align="center">
+  <img src="https://img.shields.io/badge/STATUS-ONLINE-ff69b4?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Y2K-CORE-00d9ff?style=for-the-badge">
+  <img src="https://img.shields.io/badge/VANILLA-JS-ffd43b?style=for-the-badge&logo=javascript&logoColor=111">
+  <img src="https://img.shields.io/badge/MIT-LICENSE-8a5cff?style=for-the-badge">
+</p>
 
----
+> **“A computer from 1998 that somehow became a student productivity app in 2026.”** 💾
 
-## ⚡ Features
+**NOTES.EXE** is a nostalgic student notes platform styled like a chaotic mix of **Windows 95, Y2K internet culture, and modern Gen Z aesthetics.**
 
-- **🖥️ Retro Desktop OS Interface**:
-  - Classic Windows 95 titlebars, bevels, drop shadows, and window controls (minimize/maximize/close).
-  - Windows XP Bliss wallpaper background with authentic desktop icons.
-  - Interactive Start Menu with fast access to all views and utilities.
-  - Windows Taskbar with running window status, system tray, and live clock.
-  - Retro pixel cursor and boot screen terminal sequence.
-
-- **📁 Notes Explorer**:
-  - Hierarchical semester folders (Semester 1–6) and subject drives.
-  - Unit-wise notes organization with breadcrumb path navigation.
-
-- **📚 Browse & Filter Notes**:
-  - Filter by semester, subject, and note type (Notes, Cheat Sheets, Important Questions, Previous Papers, Formula Sheets, Summaries).
-  - Sort by recent, rating, downloads, or title.
-
-- **🔍 Live Search**:
-  - Real-time search across note titles, descriptions, subjects, and tags.
-
-- **💾 Saved Notes & Note Viewer**:
-  - Save and unsave notes with instant feedback and toast notifications.
-  - Modal note viewer styled like a Windows application with formatted content, ratings, download counters, and tag badges.
-  - All saved notes and custom uploads persist in `localStorage`.
-
-- **📤 Note Upload System**:
-  - Upload notes with title, subject, semester, unit, type, tags, description, and markdown content.
-  - Newly uploaded notes immediately appear in the system and persist locally.
-
-- **👤 Student Profile**:
-  - Retro profile card with student stats (upload count, saved count, helpfulness score).
-  - Editable user profile information and pixel avatar.
-
-- **📱 Fully Responsive**:
-  - Desktop view with desktop icons, full Windows chrome, and taskbar.
-  - Mobile-optimized interface with a retro mobile navigation bar.
+No frameworks. No build setup. Just ✨retro web chaos✨.
 
 ---
 
-## 🚀 Getting Started
+## 🪩 FEATURES
 
-No build tools, Node modules, or package managers required.
+```text
+🖥️  Retro Windows Desktop
+📁  Semester & Subject Explorer
+🔍  Live Note Search
+📚  Filters & Sorting
+💾  Save / Unsave Notes
+📤  Upload Custom Notes
+👤  Student Profiles
+🔔  Retro Notifications
+🕒  Live System Clock
+📱  Responsive Mobile UI
+```
 
-Simply clone the repository and open `index.html` in any modern browser:
+### 💿 Note Types
+
+`NOTES` · `CHEAT SHEETS` · `IMPORTANT QUESTIONS` · `PYQs` · `FORMULAS` · `SUMMARIES`
+
+---
+
+## 🖥️ THE EXPERIENCE
+
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/3d036617-1c5b-4661-aeba-84e2b265a6dc" width="700">
+</p>
+
+```text
+╔════════════════════════════════════════════╗
+║  💾 NOTES.EXE                              ║
+║────────────────────────────────────────────║
+║  📁 Semester 01                            ║
+║  📁 Semester 02                            ║
+║  📁 Semester 03                            ║
+║  📁 Semester 04                            ║
+║  📁 Semester 05                            ║
+║  📁 Semester 06                            ║
+║                                            ║
+║  [ 🔍 SEARCH NOTES... ]                    ║
+╚════════════════════════════════════════════╝
+```
+
+### ✦ Retro UI
+
+Windows-style **title bars, bevels, buttons, desktop icons, taskbar, Start Menu, pixel cursor, boot screen** and more.
+
+---
+
+## 💾 DATA THAT STAYS
+
+Your saved notes, uploads, and profile information are stored locally using:
+
+```text
+localStorage
+   ↓
+save
+   ↓
+reload
+   ↓
+still there 💗
+```
+
+---
+
+## ⚡ TECH STACK
+
+<p align="center">
+
+`HTML5` · `CSS3` · `Vanilla JavaScript` · `LocalStorage`
+
+</p>
+
+No React.
+No build tools.
+No giant dependencies.
+
+Just pure browser nostalgia. 💿
+
+---
+
+## 📂 PROJECT STRUCTURE
+
+```text
+NOTES.EXE/
+│
+├── index.html
+├── README.md
+│
+├── assets/
+│   ├── backgrounds/
+│   └── icons/
+│
+├── css/
+│   └── style.css
+│
+└── js/
+    ├── app.js
+    ├── boot.js
+    ├── data.js
+    ├── filters.js
+    ├── modal.js
+    ├── notes.js
+    ├── notifications.js
+    ├── search.js
+    ├── storage.js
+    ├── ui.js
+    └── upload.js
+```
+
+---
+
+## 🚀 RUN IT
 
 ```bash
 git clone https://github.com/Marin-Codes/NOTES.EXE.git
 cd NOTES.EXE
 ```
 
-Double click `index.html` or serve with any static server:
+Open `index.html` directly, or use:
 
 ```bash
-# Python
 python -m http.server 3000
+```
 
-# or Node / npx
-npx serve .
+Then visit:
+
+```text
+http://localhost:3000
 ```
 
 ---
 
-## 🗂️ Project Structure
+## 🌸 Y2K MODE: ON
 
+<p align="center">
+  <img src="https://i.pinimg.com/originals/e6/6a/45/e66a452d025a67d20fa9c9df65c759fe.gif" width="240">
+  <img src="https://i.pinimg.com/originals/1b/77/44/1b7744f441df24734e0f9b8de44e6d19.gif" width="240">
+</p>
+
+```text
+╭──────────────────────────────────────╮
+│ 💾 SYSTEM STATUS : ONLINE            │
+│ 🖥️  OS            : NOTES.EXE       │
+│ 💿 ERA            : 2000s            │
+│ 💗 MOOD           : STUDY.exe        │
+│ ✨ AESTHETIC      : MAXIMUM          │
+╰──────────────────────────────────────╯
 ```
-NOTES.EXE/
-├── index.html              # Main OS shell and application windows
-├── README.md               # Project documentation
-├── assets/
-│   ├── backgrounds/        # Bliss wallpaper & desktop backgrounds
-│   └── icons/              # Custom transparent pixel art icons (computer, books, clipboard, etc.)
-├── css/
-│   └── style.css           # Complete retro design system & responsive styling
-└── js/
-    ├── app.js              # Application controller & view routing
-    ├── boot.js             # Retro boot screen & startup animation
-    ├── data.js             # Initial curriculum data & sample notes
-    ├── filters.js          # Semester & subject filter logic
-    ├── modal.js            # Window modal manager
-    ├── notes.js            # Note rendering & Explorer views
-    ├── notifications.js    # Windows toast notification system
-    ├── search.js           # Full-text query engine
-    ├── storage.js          # LocalStorage persistence manager
-    ├── ui.js               # UI components & DOM utilities
-    └── upload.js           # Note submission & validation handler
-```
+
+**Windows 95 🖥️ + Y2K 💿 + Web 2.0 ✨ + Gen Z 💗 + Student Chaos 📚**
 
 ---
 
-## 🌐 Deploy to GitHub Pages
+## 🌐 GITHUB PAGES
 
-1. Go to repository **Settings** → **Pages**.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Choose branch `main` and folder `/ (root)`.
-4. Click **Save**. Your site will be live at `https://marin-codes.github.io/NOTES.EXE/`!
+1. Open **Settings → Pages**
+2. Select **Deploy from a branch**
+3. Choose `main` + `/ (root)`
+4. Save
+
+Your site will be available through GitHub Pages after deployment.
 
 ---
 
-## 📄 License
+<p align="center">
 
-MIT License. Designed with nostalgia for students everywhere. 🌸
+<img src="https://i.pinimg.com/originals/6c/77/89/6c7789652aba54e6a779dd518d1227b3.gif" width="280">
+
+### 💗 MADE FOR STUDENTS WHO MISS THE INTERNET OF 2004 💗
+
+`💾` `🖥️` `💿` `🫧` `📚` `✨`
+
+<sub>open notes.exe • ignore your assignments • romanticize studying</sub>
+
+</p>
+
+---
+
+## 📜 LICENSE
+
+MIT License © NOTES.EXE
