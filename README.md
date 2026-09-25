@@ -47,7 +47,8 @@ No frameworks. No build setup. Just ✨retro web chaos✨.
 ## 🖥️ THE EXPERIENCE
 
 <p align="center">
-  <img src=https://github.com/user-attachments/assets/3d036617-1c5b-4661-aeba-84e2b265a6dc" width="700">
+ <img width="959" height="475" alt="Screenshot 2026-09-25 180032" src="https://github.com/user-attachments/assets/7906ce89-6182-4916-8c7b-67b23adfb794" />
+
 </p>
 
 ```text
