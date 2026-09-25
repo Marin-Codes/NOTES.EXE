@@ -271,111 +271,38 @@ const Notes = {
     UI.renderNoteGrid(filtered, container);
   },
 
-  // ─── Render Profile ────────────────────
-  renderProfile() {
+  // ─── Render Profile (launches CD Player popup) ─────
+  renderProfile(autoOpen = true) {
     const container = document.getElementById('profile-content');
     if (!container) return;
 
     const profile = Storage.getProfile();
-    const savedCount = Storage.getSavedNotes().length;
-    const uploadCount = Storage.getUploadedNotes().length;
-
-    const avatarHtml = (!profile.avatar || profile.avatar === '👤' || profile.avatar.includes('/') || profile.avatar.endsWith('.png'))
-      ? `<img src="assets/icons/profile.png" class="profile-card__pixel-avatar" alt="Avatar">`
-      : profile.avatar;
+    const pfpSrc = profile.pfp || 'assets/avatars/cd-avatar.png';
 
     container.innerHTML = `
-      <div class="profile-card">
-        <div class="profile-card__avatar">${avatarHtml}</div>
-        <h2 class="profile-card__name">${UI.escapeHtml(profile.name.toUpperCase())}</h2>
-        <p class="profile-card__course">${UI.escapeHtml(profile.course)}</p>
-        <p class="profile-card__username">@${UI.escapeHtml(profile.username)}</p>
-        <div class="profile-card__divider"></div>
-        <div class="profile-card__stats">
-          <div class="profile-stat">
-            <span class="profile-stat__value">${uploadCount}</span>
-            <span class="profile-stat__label">NOTES UPLOADED</span>
+      <div class="profile-launch">
+        <div class="profile-launch__card">
+          <div class="profile-launch__pfp-frame">
+            <img src="${pfpSrc}" alt="Profile Picture" class="profile-launch__pfp">
           </div>
-          <div class="profile-stat">
-            <span class="profile-stat__value">${savedCount}</span>
-            <span class="profile-stat__label">NOTES SAVED</span>
-          </div>
-          <div class="profile-stat">
-            <span class="profile-stat__value">⭐ 4.8</span>
-            <span class="profile-stat__label">HELPFULNESS</span>
-          </div>
-        </div>
-        <div class="profile-card__divider"></div>
-        <div class="profile-card__actions">
-          <button class="btn btn--retro" onclick="App.navigate('notes')">📚 MY NOTES</button>
-          <button class="btn btn--retro" onclick="App.navigate('saved')">⭐ SAVED</button>
-          <button class="btn btn--retro" id="btn-edit-profile">✏️ EDIT PROFILE</button>
-        </div>
-      </div>
-      <div id="profile-edit-form" class="profile-edit" style="display:none;">
-        <div class="win-window">
-          <div class="win-titlebar">
-            <div class="win-titlebar__left">
-              <span class="win-titlebar__icon">✏️</span>
-              <span class="win-titlebar__text">Edit Profile</span>
-            </div>
-          </div>
-          <div class="profile-edit__fields">
-            <label class="form-field">
-              <span class="form-field__label">Display Name</span>
-              <input type="text" class="form-input" id="edit-name" value="${UI.escapeHtml(profile.name)}">
-            </label>
-            <label class="form-field">
-              <span class="form-field__label">Username</span>
-              <input type="text" class="form-input" id="edit-username" value="${UI.escapeHtml(profile.username)}">
-            </label>
-            <label class="form-field">
-              <span class="form-field__label">Course</span>
-              <input type="text" class="form-input" id="edit-course" value="${UI.escapeHtml(profile.course)}">
-            </label>
-            <label class="form-field">
-              <span class="form-field__label">Semester</span>
-              <select class="form-input" id="edit-semester">
-                ${NotesData.SEMESTERS.map(s => `<option value="${s.id}" ${profile.semester === s.id ? 'selected' : ''}>${s.name}</option>`).join('')}
-              </select>
-            </label>
-            <label class="form-field">
-              <span class="form-field__label">Avatar Emoji</span>
-              <input type="text" class="form-input" id="edit-avatar" value="${profile.avatar}" maxlength="2">
-            </label>
-            <div class="profile-edit__actions">
-              <button class="btn btn--retro btn--primary" id="btn-save-profile">💾 SAVE</button>
-              <button class="btn btn--retro" id="btn-cancel-profile">CANCEL</button>
-            </div>
-          </div>
+          <h2 class="profile-launch__name">${UI.escapeHtml(profile.name.toUpperCase())}</h2>
+          <p class="profile-launch__degree">${UI.escapeHtml(profile.course)}</p>
+          <p class="profile-launch__user">@${UI.escapeHtml(profile.username || 'student.exe')}</p>
+          <button class="btn btn--retro btn--primary btn--large" id="btn-open-cd-profile">
+            💿 OPEN PROFILE PANEL
+          </button>
         </div>
       </div>
     `;
 
-    // Edit profile toggle
-    container.querySelector('#btn-edit-profile').addEventListener('click', () => {
-      container.querySelector('#profile-edit-form').style.display = 'block';
+    container.querySelector('#btn-open-cd-profile').addEventListener('click', () => {
+      Modal.openProfilePanel();
     });
 
-    container.querySelector('#btn-cancel-profile').addEventListener('click', () => {
-      container.querySelector('#profile-edit-form').style.display = 'none';
-    });
-
-    container.querySelector('#btn-save-profile').addEventListener('click', () => {
-      const updated = {
-        ...profile,
-        name: document.getElementById('edit-name').value || profile.name,
-        username: document.getElementById('edit-username').value || profile.username,
-        course: document.getElementById('edit-course').value || profile.course,
-        semester: parseInt(document.getElementById('edit-semester').value),
-        avatar: document.getElementById('edit-avatar').value || '👤',
-      };
-      Storage.saveProfile(updated);
-      Notifications.show('PROFILE UPDATED', 'Your identity has been refreshed! 🖥️', 'success');
-      this.renderProfile();
-      // Also update welcome
-      this.renderWelcomeMessage();
-    });
+    // Auto-open modal only if specified
+    if (autoOpen) {
+      Modal.openProfilePanel();
+    }
   }
 };
 

@@ -13,11 +13,15 @@ const App = {
     Boot.init();
     Upload.init();
 
+    // Apply saved app icon
+    const profile = Storage.getProfile();
+    this.applyAppIcon(profile.appIcon || 'magic-book');
+
     // Initial renders
     Notes.renderHome();
     Notes.renderExplorer();
     Notes.renderSavedNotes();
-    Notes.renderProfile();
+    Notes.renderProfile(false);
     Notes.renderAllNotes();
     UI.updateSavedCount();
 
@@ -34,6 +38,62 @@ const App = {
 
     // Set initial view
     this.navigate('home');
+  },
+
+  // ─── App Icon Customization ────────────
+  getIconUrl(key) {
+    switch (key) {
+      case 'magic-book': return 'assets/icons/app-icon.png';
+      case 'computer': return 'assets/icons/computer.png';
+      case 'books': return 'assets/icons/books.png';
+      case 'floppy':
+      default:
+        return 'assets/icons/app-icon.png';
+    }
+  },
+
+  applyAppIcon(key) {
+    const iconUrl = this.getIconUrl(key);
+
+    // Titlebar icon
+    const titlebarIcon = document.getElementById('main-app-icon');
+    if (titlebarIcon) {
+      if (key === 'floppy') {
+        titlebarIcon.innerHTML = '💾';
+      } else {
+        titlebarIcon.innerHTML = `<img src="${iconUrl}" class="win-titlebar__pixel-icon" alt="">`;
+      }
+    }
+
+    // Taskbar start button icon
+    const startIcon = document.getElementById('start-button-icon');
+    if (startIcon) {
+      if (key === 'floppy') {
+        startIcon.innerHTML = '💾';
+      } else {
+        startIcon.innerHTML = `<img src="${iconUrl}" class="taskbar__window-pixel-icon" style="width:16px;height:16px;object-fit:contain;" alt="">`;
+      }
+    }
+
+    // Start menu logo
+    const menuLogo = document.getElementById('start-menu-logo-icon');
+    if (menuLogo) {
+      if (key === 'floppy') {
+        menuLogo.innerHTML = '💾';
+      } else {
+        menuLogo.innerHTML = `<img src="${iconUrl}" class="taskbar__window-pixel-icon" style="width:20px;height:20px;object-fit:contain;" alt="">`;
+      }
+    }
+
+    // Favicon
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (favicon) {
+      if (key === 'floppy') {
+        favicon.href = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💾</text></svg>';
+      } else {
+        favicon.href = iconUrl;
+      }
+    }
   },
 
   // ─── Navigation ────────────────────────

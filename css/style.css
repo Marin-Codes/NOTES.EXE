@@ -1517,81 +1517,418 @@ h1, h2, h3, h4, h5, h6 {
 /* ═══════════════════════════════════════════════════════════
    PROFILE
    ═══════════════════════════════════════════════════════════ */
-.profile-card {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
+
+/* ─── Profile Launch Screen (behind the CD Player modal) ─── */
+.profile-launch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
   padding: var(--space-xl);
 }
 
-.profile-card__avatar {
-  font-size: 4rem;
-  margin-bottom: var(--space-md);
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+.profile-launch__card {
+  text-align: center;
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  padding: var(--space-xl);
+  max-width: 320px;
+  width: 100%;
 }
 
-.profile-card__name {
+.profile-launch__pfp-frame {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto var(--space-md);
+  border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  overflow: hidden;
+  background: #f7d8e4;
+}
+
+.profile-launch__pfp {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-launch__name {
   font-family: var(--font-pixel);
-  font-size: 1.2rem;
-  color: var(--titlebar-start);
-  letter-spacing: 2px;
-}
-
-.profile-card__course {
   font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin: 0 0 4px;
+  color: var(--text);
+}
+
+.profile-launch__degree {
+  font-size: 0.78rem;
   color: var(--text-muted);
-  margin-top: var(--space-xs);
+  margin: 0 0 2px;
 }
 
-.profile-card__username {
+.profile-launch__user {
   font-size: 0.72rem;
-  color: var(--hot-pink);
-  font-family: var(--font-pixel);
-  margin-top: var(--space-xs);
+  color: var(--text-light);
+  margin: 0 0 var(--space-md);
+  font-family: 'Consolas', monospace;
 }
 
-.profile-card__divider {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--pink), var(--baby-blue), var(--lavender), transparent);
-  margin: var(--space-lg) 0;
+/* ═══════════════════════════════════════════════════════════
+   CD PLAYER PROFILE PANEL (Inspo: Windows 95 CD Player)
+   ═══════════════════════════════════════════════════════════ */
+.cd-player {
+  max-width: 580px;
+  margin: 0 auto;
+  background: var(--win-gray);
+  padding: var(--space-md);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
 
-.profile-card__stats {
+.cd-player__deck {
   display: flex;
-  justify-content: center;
-  gap: var(--space-xl);
+  gap: var(--space-md);
+  align-items: flex-start;
 }
 
-.profile-stat {
+/* ─── Left Section: Album Cover & PFP ─── */
+.cd-player__disc-section {
+  width: 170px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 6px;
 }
 
-.profile-stat__value {
+.cd-player__cover-frame {
+  width: 160px;
+  height: 160px;
+  background: #f7d8e4;
+  border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cd-player__cover-frame:hover::after {
+  content: 'CHANGE PFP 📷';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
   font-family: var(--font-pixel);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--titlebar-start);
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-stat__label {
+.cd-player__cover-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cd-player__disc-tag {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
   font-family: var(--font-pixel);
   font-size: 0.45rem;
-  letter-spacing: 1px;
-  color: var(--text-muted);
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
 }
 
-.profile-card__actions {
+.cd-player__disc-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.cd-disc-status__indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00ff66;
+  box-shadow: 0 0 6px #00ff66;
+  display: inline-block;
+}
+
+.cd-player__pfp-btn {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  width: 100%;
+}
+
+/* ─── Right Section: Fields & Controls ─── */
+.cd-player__controls-section {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 8px;
+  min-width: 0;
 }
 
+.cd-player__field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd-player__label {
+  width: 52px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cd-player__sunken-box {
+  flex: 1;
+  min-width: 0;
+  height: 28px;
+  background: #ffffff;
+  border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.cd-player__sunken-box--select {
+  padding: 0;
+}
+
+.cd-player__input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #000000;
+  padding: 0 4px;
+}
+
+.cd-player__input:focus {
+  background: #ffffff;
+}
+
+.cd-player__select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #000000;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.cd-player__icon-preview-box {
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cd-player__preview-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* ─── Save Changes Button Row ─── */
+.cd-player__save-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.cd-player__save-btn {
+  flex: 1;
+  height: 32px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.cd-player__save-btn:hover {
+  background: var(--win-gray-light);
+}
+
+.cd-player__save-btn:active {
+  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+  padding-top: 2px;
+}
+
+.cd-player__cancel-btn {
+  height: 32px;
+  padding: 0 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  cursor: pointer;
+}
+
+.cd-player__cancel-btn:active {
+  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
+  padding-top: 2px;
+}
+
+/* ─── PFP Mini Buttons ─── */
+.cd-player__pfp-button-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.cd-player__mini-btn {
+  flex: 1;
+  height: 22px;
+  padding: 0 4px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cd-player__mini-btn:hover {
+  background: var(--win-gray-light);
+}
+
+.cd-player__mini-btn:active {
+  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
+  padding-top: 1px;
+}
+
+.cd-player__btn {
+  height: 26px;
+  min-width: 36px;
+  padding: 0 8px;
+  background: var(--win-gray);
+  border: 2px solid;
+  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.cd-player__btn:active,
+.cd-player__btn.is-active {
+  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
+  background: var(--win-gray-light);
+}
+
+/* ─── Digital LED Display ─── */
+.cd-player__led {
+  background: #090c10;
+  border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  padding: 6px 10px;
+  color: #00ff66;
+  font-family: 'Consolas', 'Courier New', monospace;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.cd-player__led-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.cd-player__led-mode {
+  color: #ffb7e8;
+  font-size: 0.65rem;
+}
+
+.cd-player__led-stats {
+  font-size: 0.62rem;
+  color: #a3e635;
+  margin-top: 4px;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Action Buttons ─── */
+.cd-player__actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ─── Edit Profile Drawer & Pickers ─── */
 .profile-edit {
-  max-width: 400px;
-  margin: var(--space-lg) auto 0;
+  max-width: 580px;
+  margin: var(--space-md) auto 0;
 }
 
 .profile-edit__fields {
@@ -1604,6 +1941,132 @@ h1, h2, h3, h4, h5, h6 {
 .profile-edit__actions {
   display: flex;
   gap: var(--space-sm);
+}
+
+/* PFP Picker Grid */
+.pfp-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.pfp-option {
+  border: 2px solid var(--bevel-dark);
+  padding: 4px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+  border-radius: 2px;
+}
+
+.pfp-option:hover {
+  background: var(--lavender-light);
+  transform: translateY(-1px);
+}
+
+.pfp-option--selected {
+  border-color: var(--hot-pink) !important;
+  background: #ffe6f4 !important;
+  box-shadow: 0 0 0 2px var(--hot-pink);
+}
+
+.pfp-option__img {
+  width: 100%;
+  height: 52px;
+  object-fit: cover;
+  display: block;
+}
+
+.pfp-option__label {
+  font-size: 0.55rem;
+  margin-top: 2px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+/* App Icon Picker Grid */
+.app-icon-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.app-icon-option {
+  border: 2px solid var(--bevel-dark);
+  padding: 6px 4px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-radius: 2px;
+}
+
+.app-icon-option:hover {
+  background: var(--baby-blue-light);
+  transform: translateY(-1px);
+}
+
+.app-icon-option--selected {
+  border-color: var(--titlebar-start) !important;
+  background: #e0f2fe !important;
+  box-shadow: 0 0 0 2px var(--titlebar-start);
+}
+
+.app-icon-option__img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.app-icon-option__label {
+  font-size: 0.55rem;
+  font-weight: 600;
+}
+
+/* ─── Floating CD Player Window Modal ─── */
+.win-window--cd-modal {
+  width: 600px;
+  max-width: 95vw;
+  background: var(--win-gray);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+  animation: modal-appear 0.2s ease;
+}
+
+.win-window--cd-modal .win-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+}
+
+.win-window--cd-modal .win-titlebar--inactive {
+  background: linear-gradient(90deg, #808080, #b5b5b5);
+}
+
+@media (max-width: 640px) {
+  .cd-player__deck {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cd-player__disc-section {
+    width: 100%;
+  }
+  .cd-player__controls-section {
+    width: 100%;
+  }
+  .pfp-picker,
+  .app-icon-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════
