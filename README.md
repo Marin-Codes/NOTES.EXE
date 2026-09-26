@@ -113,6 +113,7 @@ NOTES.EXE/
 ├── README.md
 │
 ├── assets/
+│   ├── avatars/
 │   ├── backgrounds/
 │   └── icons/
 │
